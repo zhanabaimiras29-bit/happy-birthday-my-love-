@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>С Днём Рождения, моя любимая!</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffe6f0, #fff);
+      color: #333;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      padding: 20px;
+      animation: fadeInDown 2s ease;
+    }
+    header h1 {
+      font-size: 2rem;
+      color: #b30059;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    video, iframe {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      animation: fadeIn 3s ease;
+    }
+    .message {
+      margin-top: 20px;
+      max-width: 600px;
+      padding: 15px 20px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      font-size: 1.1rem;
+      line-height: 1.5;
+      animation: fadeInUp 2s ease;
+    }
+    footer {
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    /* Анимации */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Сердечки */
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+    .heart {
+      position: absolute;
+      color: #ff4d88;
+      font-size: 20px;
+      animation: float 10s infinite;
+      opacity: 0.7;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      30% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      .message {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts"></div>
+
+  <header>
+    <h1>С Днём Рождения, моя нежность 💖</h1>
+    <p>Сегодня твой особенный день ✨</p>
+  </header>
+
+  <main>
+    <!-- Вариант 1: видеофайл -->
+    <video controls autoplay>
+      <source src="./IMG_1766.MOV" type="video/mp4">
+      Твой браузер не поддерживает видео.
+    </video>
+
+    <!-- Вариант 2: YouTube (если удобнее) -->
+    <!-- 
+    <iframe width="100%" height="315" 
+      src="https://www.youtube.com/embed/ИД_ВИДЕО" 
+      title="Поздравление" frameborder="0" allow="autoplay; encrypted-media" 
+      allowfullscreen>
+    </iframe>
+    -->
+
+    <div class="message">
+      Пусть каждый момент твоей жизни будет наполнен счастьем,  
+      как этот день! 💕  
+      Ты — самое прекрасное, что случилось со мной.  
+      Я благодарен судьбе за тебя 🌹
+    </div>
+  </main>
+
+  <footer>
+    С любовью 💕 твой [Имя]
+  </footer>
+
+  <script>
+    // Генерация сердечек
+    const heartsContainer = document.querySelector('.hearts');
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+      heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      heartsContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }
+    setInterval(createHeart, 600);
+  </script>
+</body>
+</html>
